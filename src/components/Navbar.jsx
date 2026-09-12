@@ -24,6 +24,10 @@ function Navbar() {
               Dashboard
             </Link>
 
+            <Link to="/profile">
+              Profile
+            </Link>
+
             <Link to="/add-resource">
               Add Resource
             </Link>

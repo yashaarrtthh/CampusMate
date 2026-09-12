@@ -19,6 +19,7 @@ function AddResource() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
 
   async function handleSubmit(e) {
 
@@ -165,6 +166,15 @@ if (description.trim().length < 10) {
           <label>
             Contact
           </label>
+          <div className="form-group">
+  <label>Resource Image</label>
+
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => setImage(e.target.files[0])}
+  />
+</div>
 
           <input
             type="text"

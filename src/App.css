@@ -221,3 +221,43 @@ a {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
+.reviews-section {
+  margin-top: 40px;
+}
+
+.review-card {
+  padding: 18px;
+  margin-bottom: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+}
+
+.review-card p {
+  margin: 10px 0;
+}
+
+.review-form {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+}
+
+.review-form textarea,
+.review-form select {
+  width: 100%;
+  margin: 8px 0 16px;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.review-form button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+}

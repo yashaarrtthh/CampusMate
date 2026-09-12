@@ -2,35 +2,53 @@ import { useState } from "react";
 import { supabase } from "../lib/supabase";
 
 function Signup() {
-
+  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-
   const [loading, setLoading] = useState(false);
 
   async function handleSignup(e) {
-
     e.preventDefault();
 
     setError("");
     setMessage("");
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
 
     if (error) {
       setError(error.message);
-    } else {
-      setMessage(
-        "Account created! Check your email if verification is required."
-      );
+      setLoading(false);
+      return;
     }
+
+    if (data.user) {
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .insert({
+          id: data.user.id,
+          full_name: fullName,
+          username: username,
+        });
+
+      if (profileError) {
+        console.error("Profile creation error:", profileError);
+        setError(profileError.message);
+        setLoading(false);
+        return;
+      }
+    }
+
+    setMessage(
+      "Account created! Check your email if verification is required."
+    );
 
     setLoading(false);
   }
@@ -47,6 +65,26 @@ function Signup() {
         </p>
 
         <form onSubmit={handleSignup}>
+
+          <label>Full Name</label>
+
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
+          />
+
+          <label>Username</label>
+
+          <input
+            type="text"
+            placeholder="Choose a username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
 
           <label>Email</label>
 

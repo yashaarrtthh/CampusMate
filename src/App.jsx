@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import AddResource from "./pages/AddResource";
 import EditResource from "./pages/EditResource";
 import ResourceDetails from "./pages/ResourceDetails";
+import Profile from "./pages/profile";
 
 function App() {
   return (
@@ -31,22 +32,31 @@ function App() {
           path="/signup"
           element={<Signup />}
         />
-        <Route
-          path="/edit-resource/:id"
-          element={<EditResource />}
-        />
+
         <Route
           path="/dashboard"
           element={<Dashboard />}
         />
+
         <Route
           path="/add-resource"
           element={<AddResource />}
         />
+
         <Route
-  path="/resource/:id"
-  element={<ResourceDetails />}
-/>
+          path="/edit-resource/:id"
+          element={<EditResource />}
+        />
+
+        <Route
+          path="/resource/:id"
+          element={<ResourceDetails />}
+        />
+
+        <Route
+          path="/profile"
+          element={<Profile />}
+        />
 
       </Routes>
 
